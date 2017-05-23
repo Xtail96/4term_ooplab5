@@ -44,6 +44,11 @@ unsigned int Shape::getId() const
 {
     return id;
 }
+
+bool Shape::operator ==(Shape &other)
+{
+    return this->getArea() == other.getArea();
+}
 std::ostream &operator<< (std::ostream &os, Shape &f)
 {
     f.print(os);

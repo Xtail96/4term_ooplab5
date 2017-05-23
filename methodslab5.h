@@ -32,19 +32,6 @@ bool isIntersectWith(Shape *s)
     }
 }
 
-bool redis(Shape *s)
-{
-    Color shapeColor = s->getColor();
-    if(shapeColor.red >= 100 && shapeColor.green < 100 && shapeColor.blue < 100)
-    {
-       return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
 // 1) Проверка разделен ли диапазон на две группы по заданному критерию.
 bool checkVector(stepik::vector< stepik::shared_ptr<Shape> > &container,
                 std::function<bool (Shape*)> pred)
@@ -111,7 +98,7 @@ void dividedifferentElelments(const stepik::vector< stepik::shared_ptr<Shape> > 
         bool isFinded = false;
         for(auto it2 : second)
         {
-            if(it1.get() == it2.get())
+            if(*it1.get() == *it2.get())
             {
                 isFinded = true;
                 break;

@@ -72,6 +72,8 @@ public:
     virtual double getPerimetr() const = 0;
     virtual double getArea() = 0;
 
+    bool operator == (Shape &other);
+
     friend std::ostream &operator << (std::ostream &os, Shape &f);
 
     virtual bool isPointOnBorder(const Point &p) const = 0;
