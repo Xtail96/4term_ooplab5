@@ -58,9 +58,6 @@ protected:
         center_coordinates.y = y;
     }
 
-    // метод для вычисления количества точек пересечения фигур
-    virtual int intersect(Shape& s2) const = 0;
-
 public:
     virtual ~Shape(){}
     void setColor(Color color);
@@ -80,6 +77,9 @@ public:
     virtual bool isPointOnBorder(const Point &p) const = 0;
 
     virtual void print(std::ostream &os) = 0;
+
+    // метод для вычисления количества точек пересечения фигур
+    virtual int intersect(Shape& s2) const = 0;
 
     // создает случайную фигуру
     static Shape* createRandomShape();

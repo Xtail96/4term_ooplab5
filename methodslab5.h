@@ -18,6 +18,20 @@ stepik::vector< stepik::shared_ptr<Shape> > createRandomShapeVector(unsigned int
 }
 
 // функция-предикат для немодифицирующего алгоритма
+bool isIntersectWith(Shape *s)
+{
+    Round base(0, 0, 10);
+    int res = s->intersect(base);
+    if(res == 0)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
 bool redis(Shape *s)
 {
     Color shapeColor = s->getColor();

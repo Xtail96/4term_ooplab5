@@ -19,12 +19,12 @@ int main(/*int argc, char *argv[]*/)
 {
     system("clear");
     vector< shared_ptr<Shape> > v1 = createRandomShapeVector(5);
-    vector< shared_ptr<Shape> > v2 = createRandomShapeVector(5);
+    //vector< shared_ptr<Shape> > v2 = createRandomShapeVector(5);
 
     Ellipse e(0, 0, 5, 10, 0, 1, Color(165, 90, 50));
-    Round r(0, 0, 10);
+    Round r(5, 0, 10);
     Arc a(0, 0, -M_PI/2, M_PI/2, 10);
-    Round r2(0, 0, 10, 0, 1, Color(220, 0, 0));
+    Round r2(-5, 0, 10, 0, 1, Color(220, 0, 0));
 
 //    vector< shared_ptr<Shape> > v1;
 //    v1.push_back(shared_ptr<Shape>(&e));
@@ -32,11 +32,11 @@ int main(/*int argc, char *argv[]*/)
 //    v1.push_back(shared_ptr<Shape>(&a));
 
 
-//    vector< shared_ptr<Shape> > v2;
-//    v2.push_back(shared_ptr<Shape>(&e));
-//    v2.push_back(shared_ptr<Shape>(&r2));
-//    v2.push_back(shared_ptr<Shape>(&a));
-//    v2.push_back(shared_ptr<Shape>(&r));
+    vector< shared_ptr<Shape> > v2;
+    v2.push_back(shared_ptr<Shape>(&e));
+    v2.push_back(shared_ptr<Shape>(&r2));
+    v2.push_back(shared_ptr<Shape>(&a));
+    v2.push_back(shared_ptr<Shape>(&r));
 
 
 
@@ -49,7 +49,8 @@ int main(/*int argc, char *argv[]*/)
 
 
     std::cout << std::endl << "Unmodify Algorithm:" << std::endl;
-    bool isSplitted = checkVector(v1, redis);
+    //bool isSplitted = checkVector(v1, redis);
+    bool isSplitted = checkVector(v1, isIntersectWith);
     if(isSplitted)
     {
         std::cout << "Container v1 is split" << std::endl;
