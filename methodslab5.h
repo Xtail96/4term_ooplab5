@@ -18,10 +18,24 @@ stepik::vector< stepik::shared_ptr<Shape> > createRandomShapeVector(unsigned int
 }
 
 // функция-предикат для немодифицирующего алгоритма
-bool isIntersectWith(Shape *s)
+//bool isIntersectWith(Shape *s)
+//{
+//    Round base(0, 0, 10);
+//    int res = s->intersect(base);
+//    if(res == 0)
+//    {
+//        return false;
+//    }
+//    else
+//    {
+//        return true;
+//    }
+//}
+
+bool isIntersectWith(const stepik::shared_ptr<Shape> &s)
 {
     Round base(0, 0, 10);
-    int res = s->intersect(base);
+    int res = s.get()->intersect(base);
     if(res == 0)
     {
         return false;
@@ -34,26 +48,26 @@ bool isIntersectWith(Shape *s)
 
 // 1) Проверка разделен ли диапазон на две группы по заданному критерию.
 bool checkVector(stepik::vector< stepik::shared_ptr<Shape> > &container,
-                std::function<bool (Shape*)> pred)
+                std::function<bool (stepik::shared_ptr<Shape>)> pred)
 {
     if(container.size() > 1)
     {
         bool isStateChange = false;
-        auto firstElement = container.begin();
-        bool firstState = pred(firstElement->get());
+        stepik::shared_ptr<Shape> *firstElement = container.begin();
+        bool firstState = pred(*firstElement);
 
         for(auto it = container.begin(); it != container.end();  it++)
         {
             if(!isStateChange)
             {
-                if(pred(it->get()) != firstState)
+                if(pred(*it) != firstState)
                 {
                     isStateChange = true;
                 }
             }
             else
             {
-                if(pred(it->get()) == firstState)
+                if(pred(*it) == firstState)
                 {
                     isStateChange = false;
                     break;

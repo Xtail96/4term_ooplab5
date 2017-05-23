@@ -236,7 +236,7 @@ Round *Round::createRandomShape() {
 
 double Ellipse::getPerimetr() const
 {
-    return 4 * ( M_PI * aHalfAxis * bHalfAxis + ( bHalfAxis - aHalfAxis ) ) / ( aHalfAxis + bHalfAxis );
+    return 4 * ( M_PI * aHalfAxis * bHalfAxis + std::fabs( bHalfAxis - aHalfAxis ) ) / ( aHalfAxis + bHalfAxis );
 }
 double Ellipse::getArea()
 {
