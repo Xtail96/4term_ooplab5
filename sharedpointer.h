@@ -60,6 +60,32 @@ namespace stepik
     }
 
     template <typename U>
+    bool operator > (const shared_ptr<U> &other)
+    {
+        if(get()->getId() > other.get()->getId())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    template <typename U>
+    bool operator < (const shared_ptr<U> &other)
+    {
+        if(get()->getId() < other.get()->getId())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    template <typename U>
     bool operator == (const shared_ptr<U> &other) const
     {
         return (m_ptr == other.m_ptr);

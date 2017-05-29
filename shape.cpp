@@ -49,6 +49,30 @@ bool Shape::operator ==(Shape &other)
 {
     return this->getArea() == other.getArea();
 }
+
+bool Shape::operator > (Shape &other)
+{
+    if(this->getId() > other.getId())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+bool Shape::operator < (Shape &other)
+{
+    if(this->getId() < other.getId())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 std::ostream &operator<< (std::ostream &os, Shape &f)
 {
     f.print(os);

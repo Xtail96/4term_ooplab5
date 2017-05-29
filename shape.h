@@ -74,6 +74,9 @@ public:
 
     bool operator == (Shape &other);
 
+    bool operator > (Shape &other);
+    bool operator < (Shape &other);
+
     friend std::ostream &operator << (std::ostream &os, Shape &f);
 
     virtual bool isPointOnBorder(const Point &p) const = 0;

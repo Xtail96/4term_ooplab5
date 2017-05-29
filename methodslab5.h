@@ -46,42 +46,6 @@ bool isIntersectWith(const stepik::shared_ptr<Shape> &s)
     }
 }
 
-// 1) Проверка разделен ли диапазон на две группы по заданному критерию.
-bool checkVector(stepik::vector< stepik::shared_ptr<Shape> > &container,
-                std::function<bool (stepik::shared_ptr<Shape>)> pred)
-{
-    if(container.size() > 1)
-    {
-        bool isStateChange = false;
-        stepik::shared_ptr<Shape> *firstElement = container.begin();
-        bool firstState = pred(*firstElement);
-
-        for(auto it = container.begin(); it != container.end();  it++)
-        {
-            if(!isStateChange)
-            {
-                if(pred(*it) != firstState)
-                {
-                    isStateChange = true;
-                }
-            }
-            else
-            {
-                if(pred(*it) == firstState)
-                {
-                    isStateChange = false;
-                    break;
-                }
-            }
-        }
-        return isStateChange;
-    }
-    else
-    {
-        return false;
-    }
-}
-
 bool cmp(const stepik::shared_ptr<Shape> &first, const stepik::shared_ptr<Shape> &second)
 {
     return (first.get()->getId() < second.get()->getId());
@@ -90,7 +54,7 @@ bool cmp(const stepik::shared_ptr<Shape> &first, const stepik::shared_ptr<Shape>
 void dividedifferentElelments(const stepik::vector<stepik::shared_ptr<Shape> > &first,
                          const stepik::vector<stepik::shared_ptr<Shape> > &second,
                          stepik::vector<stepik::shared_ptr<Shape> > &difference);
-// 2) Создать упорядоченную разность двух диапазонов.
+
 stepik::vector< stepik::shared_ptr<Shape> > makeSortedDifference(stepik::vector< stepik::shared_ptr<Shape> > &first,
                 stepik::vector< stepik::shared_ptr<Shape> > &second)
 {
